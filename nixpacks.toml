@@ -10,9 +10,9 @@ cmds = [
     "/opt/venv/bin/pip install filelock>=3.0.0 typing-extensions>=4.10.0 networkx sympy requests tqdm scipy pandas seaborn psutil",
     "/opt/venv/bin/pip install ultralytics==8.0.186 --no-deps",
     "mkdir -p /app/weights",
-    "curl -L -o /app/weights/yolov8-best.pt https://github.com/Seishiru/skin-backend/raw/main/weights/yolov8-best.pt",
-    "curl -L -o /app/weights/yolonas-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/yolonas-best.pth", 
-    "curl -L -o /app/weights/efficientdet-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/efficientdet-best.pth"
+    "curl -L -H 'Accept: application/vnd.git-lfs+json' -o /app/weights/yolov8-best.pt https://github.com/Seishiru/skin-backend/raw/main/weights/yolov8-best.pt",
+    "curl -L -H 'Accept: application/vnd.git-lfs+json' -o /app/weights/yolonas-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/yolonas-best.pth", 
+    "curl -L -H 'Accept: application/vnd.git-lfs+json' -o /app/weights/efficientdet-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/efficientdet-best.pth"
 ]
 
 [start]
