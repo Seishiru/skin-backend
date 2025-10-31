@@ -1,0 +1,10 @@
+{
+  "build": {
+    "builder": "nixpacks",
+    "buildCommand": "npm run build"
+  },
+  "deploy": {
+    "startCommand": "python api/main.py",
+    "restartPolicyType": "ON_FAILURE"
+  }
+}
