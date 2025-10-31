@@ -5,6 +5,6 @@ Pillow==10.0.0
 opencv-python==4.8.1.78
 requests==2.31.0
 werkzeug==2.3.7
-torch==2.0.1+cpu --index-url https://download.pytorch.org/whl/cpu
-torchvision==0.15.2+cpu --index-url https://download.pytorch.org/whl/cpu
+torch==2.0.1 --index-url https://download.pytorch.org/whl/cpu
+torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cpu
 ultralytics==8.0.186
