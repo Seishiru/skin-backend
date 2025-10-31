@@ -7,7 +7,11 @@ cmds = [
     "/opt/venv/bin/pip install torch==2.0.1 --index-url https://download.pytorch.org/whl/cpu --no-deps",
     "/opt/venv/bin/pip install torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cpu --no-deps",
     "/opt/venv/bin/pip install filelock>=3.0.0 typing-extensions>=4.10.0 networkx sympy requests tqdm scipy pandas seaborn psutil",
-    "/opt/venv/bin/pip install ultralytics==8.0.186 --no-deps"
+    "/opt/venv/bin/pip install ultralytics==8.0.186 --no-deps",
+    "mkdir -p /app/weights",
+    "wget -O /app/weights/yolov8-best.pt https://github.com/Seishiru/skin-backend/raw/main/weights/yolov8-best.pt",
+    "wget -O /app/weights/yolonas-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/yolonas-best.pth", 
+    "wget -O /app/weights/efficientdet-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/efficientdet-best.pth"
 ]
 
 [start]
