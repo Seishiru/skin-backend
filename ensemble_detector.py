@@ -41,14 +41,37 @@ class SkinDiseaseEnsemble:
     def _load_models(self):
         """Load all available models with absolute paths"""
         models = {}
-        
+    
         # YOLOv8
         yolov8_path = os.path.join(self.WEIGHTS_DIR, 'yolov8-best.pt')
         print(f"🔍 Looking for YOLOv8 at: {yolov8_path}")
         print(f"   File exists: {os.path.exists(yolov8_path)}")
         
+        # DEBUG: Check file details
+        if os.path.exists(yolov8_path):
+            file_size = os.path.getsize(yolov8_path)
+            print(f"📊 YOLOv8 file size: {file_size} bytes ({file_size/1024/1024:.2f} MB)")
+            
+            # Check first few bytes to see file type
+            try:
+                with open(yolov8_path, 'rb') as f:
+                    first_bytes = f.read(20)  # Read first 20 bytes
+                    print(f"🔬 First 20 bytes (hex): {first_bytes.hex()}")
+                    print(f"🔬 First 20 bytes (ascii): {first_bytes}")
+                    
+                    # Check if it's a valid PyTorch file (should start with specific magic bytes)
+                    if first_bytes.startswith(b'\x80\x02'):
+                        print("✅ File appears to be a valid PyTorch file")
+                    elif b'version' in first_bytes.lower() or b'html' in first_bytes.lower():
+                        print("❌ File appears to be HTML/text, not a model file")
+                    else:
+                        print("⚠️  File format unknown")
+            except Exception as e:
+                print(f"❌ Could not read file: {e}")
+    
         try:
             if os.path.exists(yolov8_path):
+                print("🔄 Attempting to load YOLOv8 model...")
                 models['YOLOv8'] = YOLO(yolov8_path)
                 print("✅ YOLOv8 loaded successfully")
             else:
@@ -56,30 +79,38 @@ class SkinDiseaseEnsemble:
                 models['YOLOv8'] = None
         except Exception as e:
             print(f"❌ YOLOv8 failed to load: {e}")
+            import traceback
+            traceback.print_exc()  # Print full stack trace
             models['YOLOv8'] = None
-        
+    
         # YOLO-NAS placeholder
         try:
-            if os.path.exists(yolov8_path):  # Use YOLOv8 as placeholder
+            if os.path.exists(yolov8_path) and models.get('YOLOv8') is not None:
+                print("🔄 Attempting to load YOLO-NAS placeholder...")
                 models['YOLO-NAS'] = YOLO(yolov8_path)
                 print("✅ YOLO-NAS placeholder loaded")
             else:
-                print("❌ YOLO-NAS placeholder not available (YOLOv8 not found)")
+                print("❌ YOLO-NAS placeholder not available (YOLOv8 not found or failed)")
                 models['YOLO-NAS'] = None
         except Exception as e:
             print(f"❌ YOLO-NAS failed: {e}")
+            import traceback
+            traceback.print_exc()
             models['YOLO-NAS'] = None
         
         # EfficientDet placeholder  
         try:
-            if os.path.exists(yolov8_path):  # Use YOLOv8 as placeholder
+            if os.path.exists(yolov8_path) and models.get('YOLOv8') is not None:
+                print("🔄 Attempting to load EfficientDet placeholder...")
                 models['EfficientDet'] = YOLO(yolov8_path)
                 print("✅ EfficientDet placeholder loaded")
             else:
-                print("❌ EfficientDet placeholder not available (YOLOv8 not found)")
+                print("❌ EfficientDet placeholder not available (YOLOv8 not found or failed)")
                 models['EfficientDet'] = None
         except Exception as e:
             print(f"❌ EfficientDet failed: {e}")
+            import traceback
+            traceback.print_exc()
             models['EfficientDet'] = None
             
         return models
