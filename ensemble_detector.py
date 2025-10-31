@@ -17,7 +17,7 @@ class SkinDiseaseEnsemble:
         self.iou_thresh = 0.5
         
         # HARDCODED CORRECT PATH
-        self.BASE_DIR = r"C:\Users\rapha\OneDrive\Desktop\Portfolio\skin-detection\skin-disease-detection"
+        self.BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.WEIGHTS_DIR = os.path.join(self.BASE_DIR, 'weights')
         self.RESULTS_DIR = os.path.join(self.BASE_DIR, 'results-ensemble')
         
