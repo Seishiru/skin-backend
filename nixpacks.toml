@@ -3,10 +3,10 @@ cmds = ["python -m venv /opt/venv"]
 
 [phases.install]
 cmds = [
-    "/opt/venv/bin/pip install flask==2.3.3 flask-cors==4.0.0 Pillow==10.0.0 numpy==1.24.3 opencv-python-headless==4.8.1.78",
+    "/opt/venv/bin/pip install flask==2.3.3 flask-cors==4.0.0 Pillow==10.0.0 numpy==1.24.3 opencv-python-headless==4.8.1.78 matplotlib==3.7.5",
     "/opt/venv/bin/pip install torch==2.0.1 --index-url https://download.pytorch.org/whl/cpu --no-deps",
     "/opt/venv/bin/pip install torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cpu --no-deps",
-    "/opt/venv/bin/pip install filelock>=3.0.0 typing-extensions>=4.10.0",
+    "/opt/venv/bin/pip install filelock>=3.0.0 typing-extensions>=4.10.0 networkx sympy",
     "/opt/venv/bin/pip install ultralytics==8.0.186 --no-deps"
 ]
 
