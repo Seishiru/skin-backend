@@ -1,4 +1,5 @@
 [phases.setup]
+pkgs = ["python311", "gcc", "libgl1", "libglib2.0-0"]
 cmds = ["python -m venv /opt/venv"]
 
 [phases.install]
