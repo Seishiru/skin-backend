@@ -1,0 +1,8 @@
+[phases.build]
+cmds = []  # Empty - no build commands needed
+
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
+
+[start]
+cmd = "python app.py"
