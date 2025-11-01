@@ -1,15 +1,15 @@
 ﻿[phases.setup]
-pkgs = [""python311"", ""gcc"", ""curl""]
-cmds = [""python -m venv /opt/venv""]
+pkgs = ["python311", "gcc", "curl"]
+cmds = ["python -m venv /opt/venv"]
 
 [phases.install]
 cmds = [
-    ""/opt/venv/bin/pip install -r requirements.txt"",
-    ""mkdir -p /app/weights"",
-    ""curl -L --retry 3 --retry-delay 5 -o /app/weights/yolov8-best.pt https://github.com/Seishiru/skin-backend/raw/main/weights/yolov8-best.pt"",
-    ""curl -L --retry 3 --retry-delay 5 -o /app/weights/yolonas-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/yolonas-best.pth"",
-    ""curl -L --retry 3 --retry-delay 5 -o /app/weights/efficientdet-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/efficientdet-best.pth""
+    "/opt/venv/bin/pip install -r requirements.txt",
+    "mkdir -p /app/weights",
+    "curl -L --retry 3 --retry-delay 5 -o /app/weights/yolov8-best.pt https://github.com/Seishiru/skin-backend/raw/main/weights/yolov8-best.pt",
+    "curl -L --retry 3 --retry-delay 5 -o /app/weights/yolonas-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/yolonas-best.pth",
+    "curl -L --retry 3 --retry-delay 5 -o /app/weights/efficientdet-best.pth https://github.com/Seishiru/skin-backend/raw/main/weights/efficientdet-best.pth"
 ]
 
 [start]
-cmd = ""/opt/venv/bin/python app.py""
+cmd = "/opt/venv/bin/python app.py"
